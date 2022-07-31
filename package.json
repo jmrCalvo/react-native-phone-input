@@ -1,6 +1,6 @@
 {
   "name": "react-native-phone",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -26,22 +26,20 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn && yarn example pods"
+    "release": "release-it"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/jmrCalvo/react-native-phone",
+  "repository": "https://github.com/jmrCalvo/react-native-phone-input",
   "author": "rodri <jmr_calvo@outlook.com> (https://github.com/jmrCalvo)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmrCalvo/react-native-phone/issues"
+    "url": "https://github.com/jmrCalvo/react-native-phone-input/issues"
   },
-  "homepage": "https://github.com/jmrCalvo/react-native-phone#readme",
+  "homepage": "https://github.com/jmrCalvo/react-native-phone-input#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -143,7 +141,7 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.json"
         }
       ]
     ]
