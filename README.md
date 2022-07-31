@@ -74,16 +74,16 @@ The props are the following:
       ```
   ### __defaultCountry__
   - Description: this is the default country that will be displayed, it must be on the two-letters format of the country
-  - type: String
+  - Type: String
   - Default: "us"
 
   ### __errorStyle__
   - Description: the style for the text that will be displayed when the user input an error
-  - type: StyleProp<TextStyle>
+  - Type: StyleProp<TextStyle>
 
   ### __modalStyle__
   - Description: the style for the modal to choose the country
-  - type: ViewStyle
+  - Type: ViewStyle
 
 ---
 ## Contributing
