@@ -1,4 +1,4 @@
-# react-native-phone
+# react-native-phone-input
 the phone input with flag button
 ## Installation
 
@@ -9,7 +9,7 @@ npm install react-native-phone
 ## Usage
 
 ```js
-import { phoneInput } from "react-native-phone";
+import { PhoneInput } from "react-native-phone";
 ```
 
 ## Contributing
@@ -21,5 +21,8 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 MIT
 
 ---
+## Thanks
 
 Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+
+Flags [provider](https://github.com/afancylab/data)

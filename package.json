@@ -1,6 +1,6 @@
 {
-  "name": "react-native-phone",
-  "version": "0.2.0",
+  "name": "react-native-phone-input",
+  "version": "0.3.0",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
