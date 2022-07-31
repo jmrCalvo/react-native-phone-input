@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import {FlagImage} from '../FlagImage';
+import { FlagImage } from '../FlagImage';
 import countries from '../../data/countries.json';
 
 const styles = StyleSheet.create({
@@ -76,8 +76,8 @@ export const CountrySelector = ({
   const [modalCountries, setCountries] = useState(countries);
 
   const searchCountry = (countryName: string) => {
-    const countriesSearched = countries.filter(country =>
-      country.country_name.includes(countryName),
+    const countriesSearched = countries.filter((country) =>
+      country.country_name.includes(countryName)
     );
     setCountries(countriesSearched);
   };
@@ -93,7 +93,8 @@ export const CountrySelector = ({
         onPress={() => {
           setModalVisible(false);
           setSelectedCountry(item.flag);
-        }}>
+        }}
+      >
         <View style={styles.itemCountry}>
           <View style={styles.visualInformation}>
             <FlagImage flagCode={item.flag} />
@@ -111,7 +112,8 @@ export const CountrySelector = ({
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}>
+        onRequestClose={() => setModalVisible(false)}
+      >
         <>
           <TouchableOpacity
             style={styles.backgroundModal}

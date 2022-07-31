@@ -9,7 +9,7 @@ import {
   TextInputFocusEventData,
   ViewStyle,
 } from 'react-native';
-import {phoneValidator} from '../../utils/flagValidator';
+import { phoneValidator } from '../../utils/flagValidator';
 import countries from '../../data/countries.json';
 
 interface PhoneTextInput {
@@ -46,34 +46,34 @@ export const PhoneTextInput = ({
   const onChangecountryPhone = (phone: string) => {
     phone = phone.replace(/[^\d.+ ]/g, '');
 
-    const possibleCountrie = countries.filter(country => {
+    const possibleCountrie = countries.filter((country) => {
       return phone
         .replace('+', '')
         .replace('00', '')
         .startsWith(country.dialing_code.replace('+', ''));
     });
-    setSelectedCountry(possibleCountrie[0]?.flag);
+    setSelectedCountry(possibleCountrie[0]?.flag || '');
     setcountryPhone(phone);
     onChangeText && onChangeText(phone);
   };
 
   const onBlurPhone = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-    const possibleCountrie = countries.filter(country => {
+    const possibleCountrie = countries.filter((country) => {
       return countryPhone.startsWith(country.dialing_code);
     });
 
     if (
       !phoneValidator({
         number: countryPhone
-          .replace(possibleCountrie[0]?.dialing_code, '')
+          .replace(possibleCountrie[0]?.dialing_code || '', '')
           .trim(),
-        countryCode: possibleCountrie[0]?.flag,
+        countryCode: possibleCountrie[0]?.flag || '',
       })
     ) {
       setError('err.not.valid.phone');
       setcountryPhone(
-        countries.find(country => country.flag === countrySelected)
-          ?.dialing_code || '',
+        countries.find((country) => country.flag === countrySelected)
+          ?.dialing_code || ''
       );
     }
 

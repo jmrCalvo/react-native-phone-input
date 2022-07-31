@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleProp,
   View,
@@ -11,10 +11,10 @@ import {
   Text,
   TextStyle,
 } from 'react-native';
-import FlagButton from './components/FlagButton';
+import { FlagButton } from './components/FlagButton';
 import FlagModalSelector from './components/CountrySelector';
 import countries from './data/countries.json';
-import {PhoneTextInput} from './components/phoneTextInput';
+import { PhoneTextInput } from './components/phoneTextInput';
 
 interface PhoneInput {
   containerStyle?: StyleProp<ViewStyle>;
@@ -44,10 +44,10 @@ const style = StyleSheet.create({
     backgroundColor: '#efecec',
     width: 50,
   },
-  errorStyle: {color: 'red', marginTop: 5},
+  errorStyle: { color: 'red', marginTop: 5 },
 });
 
-const PhoneInput = ({
+export const PhoneInput = ({
   containerStyle = style.defaultView,
   inputStyle,
   placeholder,
@@ -65,16 +65,16 @@ const PhoneInput = ({
   const [countrySelected, setSelectedCountry] =
     useState<string>(defaultCountry);
   const [countryPhone, setcountryPhone] = useState(
-    countries.find(country => country.flag === defaultCountry)?.dialing_code ||
-      '',
+    countries.find((country) => country.flag === defaultCountry)
+      ?.dialing_code || ''
   );
   const [error, setError] = useState('');
 
   const changeFlag = (code: string) => {
     setSelectedCountry(code);
     setcountryPhone(
-      countries.find(country => country.flag === code)?.dialing_code + ' ' ||
-        '',
+      countries.find((country) => country.flag === code)?.dialing_code + ' ' ||
+        ''
     );
   };
 
@@ -88,7 +88,6 @@ const PhoneInput = ({
       <View style={[containerStyle, style.defaultView]}>
         <FlagButton
           flagSelectorStyle={flagSelectorStyle}
-          defaultCountry={defaultCountry}
           setModalVisible={setModalVisible}
           countrySelected={countrySelected}
         />
