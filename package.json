@@ -1,5 +1,5 @@
 {
-  "name": "react-native-phone-input",
+  "name": "react-native-phone-input-component",
   "version": "0.3.0",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -33,13 +33,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/jmrCalvo/react-native-phone-input",
+  "repository": "https://github.com/jmrCalvo/react-native-phone-input-component",
   "author": "rodri <jmr_calvo@outlook.com> (https://github.com/jmrCalvo)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmrCalvo/react-native-phone-input/issues"
+    "url": "https://github.com/jmrCalvo/react-native-phone-input-component/issues"
   },
-  "homepage": "https://github.com/jmrCalvo/react-native-phone-input#readme",
+  "homepage": "https://github.com/jmrCalvo/react-native-phone-input-component#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

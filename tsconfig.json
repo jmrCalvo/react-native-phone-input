@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-phone-input": ["./src/index"]
+      "react-native-phone-input-component": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

@@ -1,4 +1,4 @@
-# react-native-phone-input
+# react-native-phone-input-component
 the phone input with flag button
 ## Installation
 
