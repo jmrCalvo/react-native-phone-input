@@ -8,71 +8,64 @@ import {
   Dimensions,
   TouchableOpacity,
   TextInput,
+  ViewStyle,
 } from 'react-native';
 import { FlagImage } from '../FlagImage';
 import countries from '../../data/countries.json';
 
-const styles = StyleSheet.create({
-  modalView: {
-    backgroundColor: 'white',
-    borderRadius: 30,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    height: Dimensions.get('screen').height * 0.8,
-    width: Dimensions.get('screen').width * 0.8,
-    top: Dimensions.get('screen').height * 0.1,
-    left: Dimensions.get('screen').width * 0.1,
-  },
-  itemCountry: {
-    paddingVertical: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  countryCode: {
-    fontSize: 20,
-    marginLeft: 10,
-  },
-  itemCountryText: {
-    fontSize: 20,
-    flex: 0.6,
-  },
-  visualInformation: {
-    flexDirection: 'row',
-    flex: 0.3,
-    alignItems: 'center',
-  },
-  line: {
-    borderBottomColor: 'black',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  backgroundModal: {
-    backgroundColor: '#9e9e9ea7',
-    position: 'absolute',
-    width: Dimensions.get('screen').width,
-    height: Dimensions.get('screen').height,
-  },
-  searchInput: {
-    borderColor: '#9d9d9d',
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-});
+interface CountrySelector {
+  setModalVisible: (visible: boolean) => void;
+  modalVisible: boolean;
+  setSelectedCountry: (flag: string) => void;
+  modalStyle: ViewStyle;
+}
 
 export const CountrySelector = ({
   setModalVisible,
   modalVisible,
   setSelectedCountry,
-}: any) => {
+  modalStyle,
+}: CountrySelector) => {
+  const styles = StyleSheet.create({
+    modalView: modalStyle,
+    itemCountry: {
+      paddingVertical: 15,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    countryCode: {
+      fontSize: 20,
+      marginLeft: 10,
+    },
+    itemCountryText: {
+      fontSize: 20,
+      flex: 0.6,
+    },
+    visualInformation: {
+      flexDirection: 'row',
+      flex: 0.3,
+      alignItems: 'center',
+    },
+    line: {
+      borderBottomColor: 'black',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    backgroundModal: {
+      backgroundColor: '#9e9e9ea7',
+      position: 'absolute',
+      width: Dimensions.get('screen').width,
+      height: Dimensions.get('screen').height,
+    },
+    searchInput: {
+      borderColor: '#9d9d9d',
+      borderWidth: 2,
+      padding: 10,
+      borderRadius: 10,
+      marginBottom: 20,
+    },
+  });
+
   const [modalCountries, setCountries] = useState(countries);
 
   const searchCountry = (countryName: string) => {

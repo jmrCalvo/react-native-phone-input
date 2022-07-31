@@ -10,25 +10,27 @@ import {
   StyleSheet,
   Text,
   TextStyle,
+  Dimensions,
 } from 'react-native';
 import { FlagButton } from './components/FlagButton';
-import FlagModalSelector from './components/CountrySelector';
+import { CountrySelector } from './components/CountrySelector';
 import countries from './data/countries.json';
-import { PhoneTextInput } from './components/phoneTextInput';
+import { PhoneTextInput } from './components/PhoneTextInput';
 
 interface PhoneInput {
   containerStyle?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<ViewStyle>;
   placeholder?: string;
-  returnKeyType?: ReturnKeyTypeOptions | undefined;
+  returnKeyType?: ReturnKeyTypeOptions;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText?: (text: string) => void;
   placeholderTextColor?: ColorValue;
-  textAlign?: 'left' | 'center' | 'right' | undefined;
+  textAlign?: 'left' | 'center' | 'right';
   flagSelectorStyle?: StyleProp<ViewStyle>;
   defaultCountry?: string;
   errorStyle?: StyleProp<TextStyle>;
+  modalStyle?: ViewStyle;
 }
 
 const style = StyleSheet.create({
@@ -45,6 +47,23 @@ const style = StyleSheet.create({
     width: 50,
   },
   errorStyle: { color: 'red', marginTop: 5 },
+  modalStyle: {
+    backgroundColor: 'white',
+    borderRadius: 30,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    height: Dimensions.get('screen').height * 0.8,
+    width: Dimensions.get('screen').width * 0.8,
+    top: Dimensions.get('screen').height * 0.1,
+    left: Dimensions.get('screen').width * 0.1,
+  },
 });
 
 export const PhoneInput = ({
@@ -60,6 +79,7 @@ export const PhoneInput = ({
   flagSelectorStyle = style.defaulFlagStyle,
   defaultCountry = 'us',
   errorStyle = style.errorStyle,
+  modalStyle = style.modalStyle,
 }: PhoneInput) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [countrySelected, setSelectedCountry] =
@@ -80,10 +100,11 @@ export const PhoneInput = ({
 
   return (
     <>
-      <FlagModalSelector
+      <CountrySelector
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         setSelectedCountry={changeFlag}
+        modalStyle={modalStyle}
       />
       <View style={[containerStyle, style.defaultView]}>
         <FlagButton

@@ -14,13 +14,8 @@ import { PhoneInput } from "react-native-phone-input-component";
 
 ## Examples
 
-![select country](https://i.ibb.co/yRtw8pQ/Simulator-Screen-Shot-i-Phone-13-2022-07-30-at-21-23-41.png)
-
-![search country](https://i.ibb.co/gdcRVt5/Simulator-Screen-Shot-i-Phone-13-2022-07-30-at-21-23-47.png)
-
-![normal and input custom](https://i.ibb.co/BrTMDNY/Simulator-Screen-Shot-i-Phone-13-2022-07-31-at-12-34-57.png)
-
-![custom container and input](https://i.ibb.co/XWBf0V6/Simulator-Screen-Shot-i-Phone-13-2022-07-31-at-13-31-16.png)
+| ![select country](https://i.ibb.co/yRtw8pQ/Simulator-Screen-Shot-i-Phone-13-2022-07-30-at-21-23-41.png) | ![search country](https://i.ibb.co/gdcRVt5/Simulator-Screen-Shot-i-Phone-13-2022-07-30-at-21-23-47.png) | ![normal and input custom](https://i.ibb.co/BrTMDNY/Simulator-Screen-Shot-i-Phone-13-2022-07-31-at-12-34-57.png) | ![custom container and input](https://i.ibb.co/XWBf0V6/Simulator-Screen-Shot-i-Phone-13-2022-07-31-at-13-31-16.png) | 
+| -- | -- | -- | -- |
 ## Documentation
 
 The props are the following:
@@ -85,6 +80,10 @@ The props are the following:
   ### __errorStyle__
   - Description: the style for the text that will be displayed when the user input an error
   - type: StyleProp<TextStyle>
+
+  ### __modalStyle__
+  - Description: the style for the modal to choose the country
+  - type: ViewStyle
 
 ---
 ## Contributing
