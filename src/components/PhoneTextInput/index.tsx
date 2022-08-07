@@ -43,7 +43,6 @@ export const PhoneTextInput = ({
   setSelectedCountry,
   setError,
   countrySelected,
-  defaultValue,
 }: PhoneTextInput) => {
   const onChangecountryPhone = (phone: string) => {
     phone = phone.replace(/[^\d.+ ]/g, '');
@@ -99,7 +98,6 @@ export const PhoneTextInput = ({
       placeholderTextColor={placeholderTextColor}
       textAlign={textAlign}
       value={countryPhone}
-      defaultValue={defaultValue}
     />
   );
 };

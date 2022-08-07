@@ -67,6 +67,17 @@ const style = StyleSheet.create({
   },
 });
 
+const getPhoneDefault = (
+  defaultCountry: string,
+  defaultValue: string | undefined
+) => {
+  const dialogCode =
+    countries.find((country) => country.flag === defaultCountry)
+      ?.dialing_code || '';
+
+  return `${dialogCode} ${defaultValue}`;
+};
+
 export const PhoneInput = ({
   containerStyle = style.defaultView,
   inputStyle,
@@ -87,8 +98,7 @@ export const PhoneInput = ({
   const [countrySelected, setSelectedCountry] =
     useState<string>(defaultCountry);
   const [countryPhone, setcountryPhone] = useState(
-    countries.find((country) => country.flag === defaultCountry)
-      ?.dialing_code || ''
+    getPhoneDefault(defaultCountry, defaultValue)
   );
   const [error, setError] = useState('');
 
@@ -128,7 +138,6 @@ export const PhoneInput = ({
           setSelectedCountry={setSelectedCountry}
           setError={setError}
           countrySelected={countrySelected}
-          defaultValue={defaultValue}
         />
       </View>
       {!!error && <Text style={errorStyle}>{error}</Text>}
