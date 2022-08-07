@@ -26,6 +26,7 @@ interface PhoneTextInput {
   setSelectedCountry: (code: string) => void;
   setError: (error: string) => void;
   countrySelected: string;
+  defaultValue?: string;
 }
 
 export const PhoneTextInput = ({
@@ -42,6 +43,7 @@ export const PhoneTextInput = ({
   setSelectedCountry,
   setError,
   countrySelected,
+  defaultValue,
 }: PhoneTextInput) => {
   const onChangecountryPhone = (phone: string) => {
     phone = phone.replace(/[^\d.+ ]/g, '');
@@ -54,7 +56,7 @@ export const PhoneTextInput = ({
     });
     setSelectedCountry(possibleCountrie[0]?.flag || '');
     setcountryPhone(phone);
-    onChangeText && onChangeText(phone);
+    !!onChangeText && onChangeText(phone);
   };
 
   const onBlurPhone = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -77,12 +79,12 @@ export const PhoneTextInput = ({
       );
     }
 
-    onBlur && onBlur(e);
+    !!onBlur && onBlur(e);
   };
 
   const onFocusPhone = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
     setError('');
-    onFocus && onFocus(e);
+    !!onFocus && onFocus(e);
   };
 
   return (
@@ -97,6 +99,7 @@ export const PhoneTextInput = ({
       placeholderTextColor={placeholderTextColor}
       textAlign={textAlign}
       value={countryPhone}
+      defaultValue={defaultValue}
     />
   );
 };

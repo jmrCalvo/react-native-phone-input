@@ -31,6 +31,7 @@ interface PhoneInput {
   defaultCountry?: string;
   errorStyle?: StyleProp<TextStyle>;
   modalStyle?: ViewStyle;
+  defaultValue?: string;
 }
 
 const style = StyleSheet.create({
@@ -76,6 +77,7 @@ export const PhoneInput = ({
   onChangeText,
   placeholderTextColor,
   textAlign,
+  defaultValue,
   flagSelectorStyle = style.defaulFlagStyle,
   defaultCountry = 'us',
   errorStyle = style.errorStyle,
@@ -126,9 +128,10 @@ export const PhoneInput = ({
           setSelectedCountry={setSelectedCountry}
           setError={setError}
           countrySelected={countrySelected}
+          defaultValue={defaultValue}
         />
       </View>
-      {error && <Text style={errorStyle}>{error}</Text>}
+      {!!error && <Text style={errorStyle}>{error}</Text>}
     </>
   );
 };
