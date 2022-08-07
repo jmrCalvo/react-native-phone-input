@@ -9,8 +9,9 @@ import {
   TextInputFocusEventData,
   ViewStyle,
 } from 'react-native';
-import { phoneValidator } from '../../helpers/flagValidator';
+import { flagValidador } from '../../helpers/flagValidator';
 import countries from '../../data/countries.json';
+import { getCountryByPhone } from 'src/helpers/getCountryByPhone';
 
 interface PhoneTextInput {
   inputStyle?: StyleProp<ViewStyle>;
@@ -46,14 +47,7 @@ export const PhoneTextInput = ({
 }: PhoneTextInput) => {
   const onChangecountryPhone = (phone: string) => {
     phone = phone.replace(/[^\d.+ ]/g, '');
-
-    const possibleCountrie = countries.filter((country) => {
-      return phone
-        .replace('+', '')
-        .replace('00', '')
-        .startsWith(country.dialing_code.replace('+', ''));
-    });
-    setSelectedCountry(possibleCountrie[0]?.flag || '');
+    setSelectedCountry(getCountryByPhone(phone));
     setcountryPhone(phone);
     !!onChangeText && onChangeText(phone);
   };
@@ -64,7 +58,7 @@ export const PhoneTextInput = ({
     });
 
     if (
-      !phoneValidator({
+      !flagValidador({
         number: countryPhone
           .replace(possibleCountrie[0]?.dialing_code || '', '')
           .trim(),

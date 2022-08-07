@@ -1,4 +1,4 @@
-import countries from '../data/countries.json';
+import { getCountryByPhone } from './getCountryByPhone';
 
 export const getFlagDefault = (
   defaultCountry: string | null | undefined,
@@ -9,14 +9,9 @@ export const getFlagDefault = (
   }
 
   if (defaultValue) {
-    const possibleCountry = countries.filter((country) => {
-      return defaultValue
-        .replace('+', '')
-        .replace('00', '')
-        .startsWith(country.dialing_code.replace('+', ''));
-    });
-    if (possibleCountry?.length && possibleCountry[0]) {
-      return possibleCountry[0].flag;
+    const flagByPhone = getCountryByPhone(defaultValue);
+    if (flagByPhone) {
+      return flagByPhone;
     }
   }
 

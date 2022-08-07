@@ -16,5 +16,5 @@ export const getPhoneDefault = (
     return dialogCode;
   }
 
-  return `${dialogCode} ${defaultValue}`;
+  return defaultValue;
 };
