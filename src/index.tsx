@@ -13,9 +13,10 @@ import {
   Dimensions,
 } from 'react-native';
 import { FlagButton } from './components/FlagButton';
-import { CountrySelector } from './components/CountrySelector';
-import countries from './data/countries.json';
+import { CountryModalSelector } from './components/CountryModalSelector';
 import { PhoneTextInput } from './components/PhoneTextInput';
+import { getPhoneDefault } from './helpers/getPhoneDefault';
+import { getFlagDefault } from './helpers/getFlagDefault';
 
 interface PhoneInput {
   containerStyle?: StyleProp<ViewStyle>;
@@ -28,7 +29,7 @@ interface PhoneInput {
   placeholderTextColor?: ColorValue;
   textAlign?: 'left' | 'center' | 'right';
   flagSelectorStyle?: StyleProp<ViewStyle>;
-  defaultCountry?: string;
+  defaultCountry?: string | null;
   errorStyle?: StyleProp<TextStyle>;
   modalStyle?: ViewStyle;
   defaultValue?: string;
@@ -67,17 +68,6 @@ const style = StyleSheet.create({
   },
 });
 
-const getPhoneDefault = (
-  defaultCountry: string,
-  defaultValue: string | undefined
-) => {
-  const dialogCode =
-    countries.find((country) => country.flag === defaultCountry)
-      ?.dialing_code || '';
-
-  return `${dialogCode} ${defaultValue}`;
-};
-
 export const PhoneInput = ({
   containerStyle = style.defaultView,
   inputStyle,
@@ -95,24 +85,25 @@ export const PhoneInput = ({
   modalStyle = style.modalStyle,
 }: PhoneInput) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [countrySelected, setSelectedCountry] =
-    useState<string>(defaultCountry);
+
+  const [countrySelected, setSelectedCountry] = useState<string>(
+    getFlagDefault(defaultCountry, defaultValue)
+  );
+
   const [countryPhone, setcountryPhone] = useState(
     getPhoneDefault(defaultCountry, defaultValue)
   );
+
   const [error, setError] = useState('');
 
   const changeFlag = (code: string) => {
     setSelectedCountry(code);
-    setcountryPhone(
-      countries.find((country) => country.flag === code)?.dialing_code + ' ' ||
-        ''
-    );
+    setcountryPhone(getPhoneDefault(code, ''));
   };
 
   return (
     <>
-      <CountrySelector
+      <CountryModalSelector
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         setSelectedCountry={changeFlag}
@@ -133,7 +124,7 @@ export const PhoneInput = ({
           onChangeText={onChangeText}
           placeholderTextColor={placeholderTextColor}
           textAlign={textAlign}
-          countryPhone={countryPhone}
+          countryPhone={countryPhone || 'us'}
           setcountryPhone={setcountryPhone}
           setSelectedCountry={setSelectedCountry}
           setError={setError}

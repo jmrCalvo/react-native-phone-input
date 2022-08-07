@@ -9,7 +9,7 @@ import {
   TextInputFocusEventData,
   ViewStyle,
 } from 'react-native';
-import { phoneValidator } from '../../utils/flagValidator';
+import { phoneValidator } from '../../helpers/flagValidator';
 import countries from '../../data/countries.json';
 
 interface PhoneTextInput {

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Image } from 'react-native';
-import importImage from '../../utils/importImage';
+import importImage from '../../helpers/importImage';
 
 export const FlagImage = ({ flagCode }: { flagCode: string }) => {
   return (

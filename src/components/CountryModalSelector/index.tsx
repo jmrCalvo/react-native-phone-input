@@ -13,19 +13,19 @@ import {
 import { FlagImage } from '../FlagImage';
 import countries from '../../data/countries.json';
 
-interface CountrySelector {
+interface CountryModalSelector {
   setModalVisible: (visible: boolean) => void;
   modalVisible: boolean;
   setSelectedCountry: (flag: string) => void;
   modalStyle: ViewStyle;
 }
 
-export const CountrySelector = ({
+export const CountryModalSelector = ({
   setModalVisible,
   modalVisible,
   setSelectedCountry,
   modalStyle,
-}: CountrySelector) => {
+}: CountryModalSelector) => {
   const styles = StyleSheet.create({
     modalView: modalStyle,
     itemCountry: {
@@ -128,4 +128,4 @@ export const CountrySelector = ({
   );
 };
 
-export default CountrySelector;
+export default CountryModalSelector;
